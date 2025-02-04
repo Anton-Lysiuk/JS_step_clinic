@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctor Visit</title>
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+  <header class="header">
+    <img class="header-logo" src="./img/logo.png" alt="logo" />
+    <div class="header-button">
+      <button id="loginButton" class="btn active-btn btn-login">Вхід</button>
+      <button id="createButton" class="btn btn-create">Створити візит</button>
+      <button id="logOutBtn" class="btn btn-out">Вихід</button>
+    </div>
+  </header>
+  <main>
+    <section id="filter-container"></section>
+    <!-- Текст No items have been added  -->
+    <section class="content--hidden">
+      <div class="container">
+        <div class="dragzone">
+          <div class="textBoard" id="textBoard">
+            <p id="NoItems">No items have been added</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Модальне вікно "Створити візит" -->
+    <section id="createModal" class="createModal">
+      <div class="create-modal__content">
+        <div class="create-modal__header">
+          <button class="close">
+            <img src="./img/close.png" alt="close" />
+          </button>
+          <h2 class="create-modal__title">Створити візит</h2>
+        </div>
+        <form id="formDoctors" novalidate>
+          <label class="form-label" for="doctor">Лікар:</label>
+          <select id="doctor" name="doctor" required>
+            <option value="" disabled selected>Оберіть лікаря</option>
+            <option value="cardiologist">Кардіолог</option>
+            <option value="dentist">Стоматолог</option>
+            <option value="therapist">Терапевт</option>
+          </select>
+          <div id="commonFieldsForm">
+            <label class="form-label" for="purpose">Мета візиту:</label>
+            <input type="text" id="purpose" name="purpose" required />
+            <label class="form-label" for="description">Опис візиту:</label>
+            <textarea id="description" name="description" required></textarea>
+            <label class="form-label" for="urgency">Терміновість:</label>
+            <select id="urgency" name="urgency" required>
+              <option value="high">Звичайна</option>
+              <option value="normal">Пріоритетна</option>
+              <option value="emergency">Невідкладна</option>
+            </select>
+            <label class="form-label" for="fullName">ПІБ:</label>
+            <input type="text" id="fullName" name="fullName" required />
+            <label class="form-label" for="status">Статус:</label>
+            <select id="status" name="status" required>
+              <option value="Open">Open</option>
+              <option value="Done">Done</option>
+            </select>
+          </div>
+          <div id="uniqueFields"></div>
+          <button class="create-modal__btn" type="submit">Створити</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- Модальне вікно "Авторизація" -->
+  <template id="template">
+    <div class="overlay">
+      <form class="form login-in">
+        <button type="button" class="close-btn">&times;</button>
+        <label for="email">email
+          <input type="email" id="email" class="login-in_email login-in_input" />
+        </label>
+
+        <label for="password">password
+          <input type="password" id="password" class="login-in_pass login-in_input" />
+        </label>
+
+        <button type="submit" class="btn btn_in">sign in</button>
+        <button type="submit" class="btn btn_reg">register</button>
+      </form>
+    </div>
+  </template>
+  <div id="root"></div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="./js/script.js" type="module"></script>
+</body>
+
+</html>
